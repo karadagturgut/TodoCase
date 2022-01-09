@@ -8,24 +8,24 @@ using TodoCase.DataAccess.Repository.IRepository;
 
 namespace TodoCase.DataAccess.Repository
 {
-    public class PersonRepository : IPersonRepository
+    class PersonelTaskRepository : IPersonelTaskRepository
     {
-        public void Add(Person entity)
+        public void Add(PersonelTask entity)
         {
             throw new NotImplementedException();
         }
 
-        public Person Get(int id)
+        public PersonelTask Get(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Person> GetAll(Expression<Func<Person, bool>> filter = null, Func<IQueryable<Person>, IOrderedQueryable<Person>> orderBy = null, string includeProperties = null)
+        public IEnumerable<PersonelTask> GetAll(Expression<Func<PersonelTask, bool>> filter = null, Func<IQueryable<PersonelTask>, IOrderedQueryable<PersonelTask>> orderBy = null, string includeProperties = null)
         {
             throw new NotImplementedException();
         }
 
-        public Person GetFirstOrDefault(Expression<Func<Person, bool>> filter = null, string includeProperties = null)
+        public PersonelTask GetFirstOrDefault(Expression<Func<PersonelTask, bool>> filter = null, string includeProperties = null)
         {
             throw new NotImplementedException();
         }
@@ -35,17 +35,17 @@ namespace TodoCase.DataAccess.Repository
             throw new NotImplementedException();
         }
 
-        public void Remove(Person entity)
+        public void Remove(PersonelTask entity)
         {
             throw new NotImplementedException();
         }
 
-        public void RemoveRange(IEnumerable<Person> entity)
+        public void RemoveRange(IEnumerable<PersonelTask> entity)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Person entity)
+        public void Update(PersonelTask entity)
         {
             throw new NotImplementedException();
         }

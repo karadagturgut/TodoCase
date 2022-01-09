@@ -8,24 +8,24 @@ using TodoCase.DataAccess.Repository.IRepository;
 
 namespace TodoCase.DataAccess.Repository
 {
-    public class PersonRepository : IPersonRepository
+    public class PersonelAdressesRepository : IPersonelAdressesRepository
     {
-        public void Add(Person entity)
+        public void Add(PersonAdresses entity)
         {
             throw new NotImplementedException();
         }
 
-        public Person Get(int id)
+        public PersonAdresses Get(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Person> GetAll(Expression<Func<Person, bool>> filter = null, Func<IQueryable<Person>, IOrderedQueryable<Person>> orderBy = null, string includeProperties = null)
+        public IEnumerable<PersonAdresses> GetAll(Expression<Func<PersonAdresses, bool>> filter = null, Func<IQueryable<PersonAdresses>, IOrderedQueryable<PersonAdresses>> orderBy = null, string includeProperties = null)
         {
             throw new NotImplementedException();
         }
 
-        public Person GetFirstOrDefault(Expression<Func<Person, bool>> filter = null, string includeProperties = null)
+        public PersonAdresses GetFirstOrDefault(Expression<Func<PersonAdresses, bool>> filter = null, string includeProperties = null)
         {
             throw new NotImplementedException();
         }
@@ -35,17 +35,17 @@ namespace TodoCase.DataAccess.Repository
             throw new NotImplementedException();
         }
 
-        public void Remove(Person entity)
+        public void Remove(PersonAdresses entity)
         {
             throw new NotImplementedException();
         }
 
-        public void RemoveRange(IEnumerable<Person> entity)
+        public void RemoveRange(IEnumerable<PersonAdresses> entity)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Person entity)
+        public void Update(PersonAdresses entity)
         {
             throw new NotImplementedException();
         }
