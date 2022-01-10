@@ -35,6 +35,7 @@ namespace TodoCase
             services.AddControllersWithViews();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IPersonService, PersonelService>();
+            services.AddScoped<ITaskService, TaskService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
