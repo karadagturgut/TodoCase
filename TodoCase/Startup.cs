@@ -10,6 +10,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using TodoCase.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
+using TodoCase.DataAccess.Repositories.IRepositories;
+using TodoCase.DataAccess.Repositories;
+using TodoCase.DataAccess.Services.IServices;
+using TodoCase.DataAccess.Services;
 
 namespace TodoCase
 {
@@ -29,6 +33,8 @@ namespace TodoCase
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllersWithViews();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IPersonService, PersonelService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

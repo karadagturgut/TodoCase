@@ -4,50 +4,31 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using TodoCase.Core.Entities;
+using TodoCase.DataAccess.Data;
+using TodoCase.DataAccess.Repositories;
 using TodoCase.DataAccess.Repository.IRepository;
 
 namespace TodoCase.DataAccess.Repository
 {
-    public class PersonelAdressesRepository : IPersonelAdressesRepository
+    public class PersonelAdressesRepository : Repository<PersonAdresses>, IPersonelAdressesRepository
     {
-        public void Add(PersonAdresses entity)
+        private readonly ApplicationDbContext _db;
+        public PersonelAdressesRepository(ApplicationDbContext db) : base(db)
         {
-            throw new NotImplementedException();
+            _db = db;
+        }
+        /// <summary>
+        /// Person ID'ye göre adresleri getirir.
+        /// </summary>
+        /// <param name="personId"></param>
+        /// <returns></returns>
+        public IQueryable<PersonAdresses> GetByPersonId(int personId)
+        {
+
+            var value = _db.PersonAdresses.Where(x => x.PersonId == personId);
+            return value;
         }
 
-        public PersonAdresses Get(int id)
-        {
-            throw new NotImplementedException();
-        }
 
-        public IEnumerable<PersonAdresses> GetAll(Expression<Func<PersonAdresses, bool>> filter = null, Func<IQueryable<PersonAdresses>, IOrderedQueryable<PersonAdresses>> orderBy = null, string includeProperties = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public PersonAdresses GetFirstOrDefault(Expression<Func<PersonAdresses, bool>> filter = null, string includeProperties = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Remove(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Remove(PersonAdresses entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveRange(IEnumerable<PersonAdresses> entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(PersonAdresses entity)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

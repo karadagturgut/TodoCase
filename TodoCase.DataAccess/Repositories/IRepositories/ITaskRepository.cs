@@ -5,7 +5,8 @@ using TodoCase.Core.Entities;
 
 namespace TodoCase.DataAccess.Repository.IRepository
 {
-    public interface ITaskRepository:IRepository<Task>
+    public interface ITaskRepository : IRepository<Task>
     {
+        Task TaskByPersonId(int id);
     }
 }
