@@ -6,10 +6,9 @@ using TodoCase.Core.Enums;
 
 namespace TodoCase.Core.ViewModel
 {
-    public class TaskListViewModel
+    public class TaskViewModel
     {
         public Task Task { get; set; }
-        public IEnumerable<Person> PersonList { get; set; }
         public TaskStatus TaskStatus { get; set; }
     }
 }

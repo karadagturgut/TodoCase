@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using TodoCase.Core.Entities;
+using TodoCase.Core.Enums;
 using TodoCase.Core.ViewModel;
 using TodoCase.DataAccess.Repositories.IRepositories;
 using TodoCase.DataAccess.Services.IServices;
@@ -47,11 +48,18 @@ namespace TodoCase.DataAccess.Services
             return model;
         }
 
-        public void Insert(Task model)
+        public TaskStatus GetTaskStatus(int taskId)
+        {
+           return _uow.PersonelTask.GetFirstOrDefault(x => x.TaskId == taskId).TaskStatus;
+        }
+
+        public void Insert(TaskViewModel model)
         {
             try
             {
-                _uow.Task.Add(model);
+                _uow.Task.Add(model.Task);
+                PersonelTask personelTask = new PersonelTask { PersonelId = model.Task.PersonelId, TaskId = model.Task.Id, TaskStatus = model.TaskStatus };
+                _uow.PersonelTask.Add(personelTask);
             }
             catch (Exception)
             {
@@ -59,12 +67,13 @@ namespace TodoCase.DataAccess.Services
                 throw;
             }
         }
-
-        public void Update(Task model)
+        public void Update(TaskViewModel model)
         {
             try
             {
-                _uow.Task.Update(model);
+                _uow.Task.Update(model.Task);
+                PersonelTask personelTask = new PersonelTask{ PersonelId = model.Task.PersonelId, TaskId = model.Task.Id, TaskStatus = model.TaskStatus };
+                _uow.PersonelTask.Update(personelTask);
             }
             catch (Exception)
             {

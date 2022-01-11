@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
+using TodoCase.Core.Enums;
 
 namespace TodoCase.Core.Entities
 {
