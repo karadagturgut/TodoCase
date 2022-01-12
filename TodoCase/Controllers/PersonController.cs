@@ -86,6 +86,11 @@ namespace TodoCase.Controllers
             var model = _taskService.GetByPersonId(personId);
             return View(model);
         }
+        public JsonResult GetAddressValuesByAddressId(int id)
+        {
+            var value = _personService.GetAddressValuesByAddressId(id);
+            return Json(new { id = value.Id, name = value.Name, addressType = value.AdressType,   });
+        }
 
     }
 }

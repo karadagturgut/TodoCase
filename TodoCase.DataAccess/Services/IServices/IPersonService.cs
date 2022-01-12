@@ -14,5 +14,6 @@ namespace TodoCase.DataAccess.Services.IServices
         void Insert(PersonelViewModel model);
         void Delete(int id);
         PersonelViewModel GetByPersonId(int id);
+        PersonAdresses GetAddressValuesByAddressId(int id);
     }
 }

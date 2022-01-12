@@ -37,7 +37,11 @@ namespace TodoCase.DataAccess.Services
             return model;
 
         }
-
+        public PersonAdresses GetAddressValuesByAddressId(int id)
+        {
+            var model = _uow.PersonelAddresses.GetFirstOrDefault(x => x.Id == id);
+            return model;
+        }
         public PersonelViewModel GetByPersonId(int id)
         {
             PersonelViewModel model = new PersonelViewModel();
