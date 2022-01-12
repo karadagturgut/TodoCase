@@ -43,9 +43,9 @@ namespace TodoCase.DataAccess.Services
             var model = _uow.PersonelAddresses.GetFirstOrDefault(x => x.Id == id);
             return model;
         }
-        public PersonelUpdateModel GetByPersonId(int id)
+        public PersonelUpsertModel GetByPersonId(int id)
         {
-            PersonelUpdateModel model = new PersonelUpdateModel();
+            PersonelUpsertModel model = new PersonelUpsertModel();
             model.Person = _uow.Person.GetFirstOrDefault(x => x.Id == id);
             model.PersonAdresses = _uow.PersonelAddresses.GetByPersonId(id).ToList();
             return model;
@@ -70,7 +70,7 @@ namespace TodoCase.DataAccess.Services
             }
 
         }
-        public void Update(PersonelUpdateModel model)
+        public void Update(PersonelUpsertModel model)
         {
             var person = model.Person;
             _uow.Person.Update(person);

@@ -63,7 +63,7 @@ namespace TodoCase.Controllers
             return View(model);
         }
         [HttpPost]
-        public IActionResult Update(PersonelUpdateModel model)
+        public IActionResult Update(PersonelUpsertModel model)
         {
             if (ModelState.IsValid)
             {

@@ -1,4 +1,4 @@
-﻿@model TodoCase.Core.ViewModel.Insert.PersonelUpdateModel
+﻿@model TodoCase.Core.ViewModel.Insert.PersonelUpsertModel
 @{
     ViewData["Title"] = "Update";
     var adList = Model.PersonAdresses.Select(i => new SelectListItem() { Text = i.Name, Value = i.Id.ToString() });
@@ -20,8 +20,6 @@
                 dataType: "Json",
                 success: function (data) {
                     console.log(data);
-
-                    $('#txtName').append(data.name);
                 }
             })
         });

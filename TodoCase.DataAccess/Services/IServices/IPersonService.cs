@@ -11,10 +11,10 @@ namespace TodoCase.DataAccess.Services.IServices
     public interface IPersonService
     {
         IEnumerable<Person> GetAll();
-        void Update(PersonelUpdateModel model);
+        void Update(PersonelUpsertModel model);
         void Insert(PersonelViewModel model);
         void Delete(int id);
-        PersonelUpdateModel GetByPersonId(int id);
+        PersonelUpsertModel GetByPersonId(int id);
         PersonAdresses GetAddressValuesByAddressId(int id);
     }
 }
