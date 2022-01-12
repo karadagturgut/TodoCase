@@ -12,7 +12,7 @@ namespace TodoCase.DataAccess.Services.IServices
         void Insert(TaskViewModel model);
         void Delete(int id);
         TaskListViewModel GetTaskById(int id);
-        Task GetByPersonId(int id);
+        List<Task> GetByPersonId(int id);
         TaskStatus GetTaskStatus(int taskId);
         
     }

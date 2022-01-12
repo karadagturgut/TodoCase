@@ -31,11 +31,9 @@ namespace TodoCase.DataAccess.Services
 
         }
 
-        public PersonelListViewModel GetAll()
+        public IEnumerable<Person> GetAll()
         {
-            PersonelListViewModel model = new PersonelListViewModel();
-            model.PersonList = _uow.Person.GetAll();
-            model.PersonAdresses = _uow.PersonelAddresses.GetAll();
+            var model = _uow.Person.GetAll();
             return model;
 
         }
@@ -43,11 +41,10 @@ namespace TodoCase.DataAccess.Services
         public PersonelViewModel GetByPersonId(int id)
         {
             PersonelViewModel model = new PersonelViewModel();
-            model.Person = _uow.Person.GetFirstOrDefault(x=>x.Id==id);
+            model.Person = _uow.Person.GetFirstOrDefault(x => x.Id == id);
             model.Adresses = _uow.PersonelAddresses.GetByPersonId(id);
             return model;
         }
-
         public void Insert(PersonelViewModel model)
         {
             try

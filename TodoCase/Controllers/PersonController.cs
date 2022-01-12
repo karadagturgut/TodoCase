@@ -22,6 +22,20 @@ namespace TodoCase.Controllers
             var model = _personService.GetAll();
             return View(model);
         }
+
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            var model = _personService.GetAll();
+            return Json(new { data = model });
+        }
+        [HttpGet]
+        public IActionResult Insert()
+        {
+            return View();
+        }
+
+        [HttpPost]
         public IActionResult Insert(PersonelViewModel model)
         {
             if (ModelState.IsValid)
@@ -41,6 +55,13 @@ namespace TodoCase.Controllers
 
 
         }
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            var model = _personService.GetByPersonId(id);
+            return View(model);
+        }
+        [HttpPost]
         public IActionResult Update(PersonelViewModel model)
         {
             if (ModelState.IsValid)
@@ -59,7 +80,7 @@ namespace TodoCase.Controllers
             return RedirectToAction(nameof(Index));
 
         }
-
+        [HttpGet]
         public IActionResult PersonsTask(int personId)
         {
             var model = _taskService.GetByPersonId(personId);

@@ -1,0 +1,82 @@
+﻿@model TodoCase.Core.ViewModel.PersonelViewModel
+@{
+    ViewData["Title"] = "Insert";
+    var address = new TodoCase.Core.Entities.PersonAdresses();
+    var addresses = new List<TodoCase.Core.Entities.PersonAdresses>();
+
+}
+
+
+<form method="post" enctype="multipart/form-data">
+    <div class="row p-3 border">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="col-12 border-bottom">
+            <h2 class="text-primary">Güncelle</h2>
+        </div>
+        <div class="col-8 pt-4">
+            <div class="form-group row">
+                <div class="col-4">
+                    Başlık
+                </div>
+                <div class="col-8">
+                    <input asp-for="Person.Name" class="form-control" />
+                    <span asp-validation-for="Person.Name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    Adet
+                </div>
+                <div class="col-8">
+                    <input asp-for="Person.LastName" class="form-control" />
+                    <span asp-validation-for="Person.LastName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    Açıklama
+                </div>
+                <div class="col-8">
+                    <textarea asp-for="Person.BirthDate" class="form-control"> </textarea>
+                    <span asp-validation-for="Person.BirthDate" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    Adresler
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-8">
+                        @Html.TextBox(address.Name)
+                    </div>
+                    <div class="col-8">
+                        <textarea asp-for="@address.AdressType" class="form-control"> </textarea>
+                        <span asp-validation-for="@address.AdressType" class="text-danger"></span>
+                    </div>
+                    <div class="col-8">
+                        <textarea asp-for="@address.Address" class="form-control"> </textarea>
+                        <span asp-validation-for="@address.Address" class="text-danger"></span>
+                    </div>
+                    <div class="col-8">
+                        <textarea asp-for="@address.CityId" class="form-control"> </textarea>
+                        <span asp-validation-for="@address.CityId" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-8 offset-4">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button onclick="return validateInput()" type="submit" class="btn btn-primary"> Güncelle</button>
+                        </div>
+                        <div class="col-md-6">
+                            <a asp-action="Index" class="btn btn-success"> Kayıt Listesi</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

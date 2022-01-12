@@ -19,10 +19,10 @@ namespace TodoCase.DataAccess.Repository
             _db = db;
         }
 
-        public Task TaskByPersonId(int id)
+        public List<Task> TaskByPersonId(int id)
         {
-            var value = _db.Task.Where(x => x.PersonelId == id);
-            return (Task)value;
+            var value = _db.Task.Where(x => x.PersonelId == id).ToList();
+            return value;
         }
     }
 }

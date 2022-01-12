@@ -9,7 +9,7 @@ namespace TodoCase.DataAccess.Services.IServices
 {
     public interface IPersonService
     {
-        PersonelListViewModel GetAll();
+        IEnumerable<Person> GetAll();
         void Update(PersonelViewModel model);
         void Insert(PersonelViewModel model);
         void Delete(int id);

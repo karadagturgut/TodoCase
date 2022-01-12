@@ -25,9 +25,7 @@ namespace TodoCase.Controllers
 
         public IActionResult Index()
         {
-            var person = _personService.GetAll();
-            var task = _taskService.GetAll();
-            return View(person);
+            return View();
         }
 
         public IActionResult Privacy()

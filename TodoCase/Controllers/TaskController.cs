@@ -20,6 +20,12 @@ namespace TodoCase.Controllers
             var model = _taskService.GetAll();
             return View(model);
         }
+        [HttpGet]
+        public IActionResult Insert()
+        {
+            return View();
+        }
+        [HttpPost]
         public IActionResult Insert(TaskViewModel model)
         {
             if (ModelState.IsValid)
@@ -29,7 +35,7 @@ namespace TodoCase.Controllers
                     _taskService.Insert(model);
                     return Json(new { success = true, message = "Ekleme işlemi tamamlandı.", data = model });
                 }
-                catch (Exception ex )
+                catch (Exception ex)
                 {
 
                     return Json(new { success = false, message = ex.Message });
@@ -37,7 +43,13 @@ namespace TodoCase.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
-
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            var model = _taskService.GetTaskById(id);
+            return View(model);
+        }
+        [HttpPost]
         public IActionResult Update(TaskViewModel model)
         {
             if (ModelState.IsValid)
@@ -55,6 +67,12 @@ namespace TodoCase.Controllers
             }
             return RedirectToAction(nameof(Index));
 
+        }
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            var model = _taskService.GetAll();
+            return Json(new { data = model });
         }
     }
 }

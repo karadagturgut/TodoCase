@@ -34,7 +34,7 @@ namespace TodoCase.DataAccess.Services
             return _uow.Task.GetAll();
         }
 
-        public Task GetByPersonId(int id)
+        public List<Task> GetByPersonId(int id)
         {
             var taskList = _uow.Task.TaskByPersonId(id);
             return taskList;
