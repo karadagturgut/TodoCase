@@ -11,9 +11,11 @@ namespace TodoCase.Controllers
     public class TaskController : Controller
     {
         private readonly ITaskService _taskService;
-        public TaskController(ITaskService taskService)
+        private readonly IPersonService _personService;
+        public TaskController(ITaskService taskService, IPersonService personService)
         {
             _taskService = taskService;
+            _personService = personService;
         }
         public IActionResult Index()
         {
@@ -23,7 +25,16 @@ namespace TodoCase.Controllers
         [HttpGet]
         public IActionResult Insert()
         {
-            return View();
+            TaskListViewModel model = new TaskListViewModel
+            {
+                Task = new Core.Entities.Task(),
+                TaskStatus = Core.Enums.TaskStatus.Started,
+                PersonList = _personService.GetAll()
+                
+            };
+            return View(model);
+
+            
         }
         [HttpPost]
         public IActionResult Insert(TaskViewModel model)

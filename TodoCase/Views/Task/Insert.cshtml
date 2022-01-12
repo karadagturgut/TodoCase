@@ -2,7 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-
+    var personelList = Model.PersonList.Select(i => new SelectListItem() { Text = i.Name+" "+i.LastName , Value=i.Id.ToString() });
 }
 
 <form method="post" enctype="multipart/form-data">
@@ -41,7 +41,7 @@
                     Atanan
                 </div>
                 <div class="col-8">
-                    @Html.DropDownListFor(m => m.Task.PersonelId, (SelectList)Model.PersonList, "-- Kullanıcı Seçiniz --", new { @class = "form-control" })
+                    @Html.DropDownListFor(m => m.Task.PersonelId, personelList , "-- Kullanıcı Seçiniz --", new { @class = "form-control" })
                 </div>
             </div>
             <div class="form-group row">

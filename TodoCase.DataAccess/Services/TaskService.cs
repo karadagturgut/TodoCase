@@ -58,22 +58,27 @@ namespace TodoCase.DataAccess.Services
             try
             {
                 _uow.Task.Add(model.Task);
+                _uow.Save();
                 PersonelTask personelTask = new PersonelTask { PersonelId = model.Task.PersonelId, TaskId = model.Task.Id, TaskStatus = model.TaskStatus };
                 _uow.PersonelTask.Add(personelTask);
+                _uow.Save();
             }
             catch (Exception)
             {
 
                 throw;
             }
+            
         }
         public void Update(TaskViewModel model)
         {
             try
             {
                 _uow.Task.Update(model.Task);
+                _uow.Save();
                 PersonelTask personelTask = new PersonelTask{ PersonelId = model.Task.PersonelId, TaskId = model.Task.Id, TaskStatus = model.TaskStatus };
                 _uow.PersonelTask.Update(personelTask);
+                _uow.Save();
             }
             catch (Exception)
             {
