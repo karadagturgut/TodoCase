@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using TodoCase.Core.Entities;
 using TodoCase.Core.ViewModel;
+using TodoCase.Core.ViewModel.Insert;
 using TodoCase.DataAccess.Repositories.IRepositories;
 using TodoCase.DataAccess.Repository.IRepository;
 using TodoCase.DataAccess.Services.IServices;
@@ -42,11 +43,11 @@ namespace TodoCase.DataAccess.Services
             var model = _uow.PersonelAddresses.GetFirstOrDefault(x => x.Id == id);
             return model;
         }
-        public PersonelViewModel GetByPersonId(int id)
+        public PersonelUpdateModel GetByPersonId(int id)
         {
-            PersonelViewModel model = new PersonelViewModel();
+            PersonelUpdateModel model = new PersonelUpdateModel();
             model.Person = _uow.Person.GetFirstOrDefault(x => x.Id == id);
-            model.Adresses = _uow.PersonelAddresses.GetByPersonId(id);
+            model.PersonAdresses = _uow.PersonelAddresses.GetByPersonId(id).ToList();
             return model;
         }
         public void Insert(PersonelViewModel model)
@@ -69,11 +70,11 @@ namespace TodoCase.DataAccess.Services
             }
 
         }
-        public void Update(PersonelViewModel model)
+        public void Update(PersonelUpdateModel model)
         {
             var person = model.Person;
             _uow.Person.Update(person);
-            foreach (var item in model.Adresses)
+            foreach (var item in model.PersonAdresses)
             {
                 _uow.PersonelAddresses.Update(item);
             }

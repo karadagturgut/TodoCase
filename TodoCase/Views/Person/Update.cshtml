@@ -1,9 +1,33 @@
-﻿@model TodoCase.Core.ViewModel.PersonelViewModel
+﻿@model TodoCase.Core.ViewModel.Insert.PersonelUpdateModel
 @{
     ViewData["Title"] = "Update";
-    var adList = Model.Adresses.Select(i => new SelectListItem() { Text = i.Name, Value = i.Id.ToString() });
+    var adList = Model.PersonAdresses.Select(i => new SelectListItem() { Text = i.Name, Value = i.Id.ToString() });
+
 }
 
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+<script>
+
+    $(function () {
+        $('#DrpAddList').change(function () {
+
+            var id = $('#DrpAddList').val();
+            $.ajax({
+                url: '/Person/GetAddressValuesByAddressId/',
+                data: { id: id },
+                type: "POST",
+                dataType: "Json",
+                success: function (data) {
+                    console.log(data);
+
+                    $('#txtName').append(data.name);
+                }
+            })
+        });
+
+    }
+</script>
 
 <form method="post" enctype="multipart/form-data">
     <div class="row p-3 border">
@@ -53,20 +77,20 @@
                 </div>
                 <div class="col-8">
                     @{
-                        foreach (var item in Model.Adresses)
+                        for (int i = 0; i < Model.PersonAdresses.Count; i++)
                         {
 
                             <div class="col-8">
-                                <textarea asp-for="Adresses.Where(x=>x.Id== item.Id).FirstOrDefault().Name" class="form-control"> </textarea>
-                                <span asp-validation-for="Adresses.Where(x=>x.Id== item.Id).FirstOrDefault().Name" class="text-danger"></span>
+                                <textarea asp-for="PersonAdresses[i].Name" class="form-control"> </textarea>
+                                <span asp-validation-for="PersonAdresses[i].Name" class="text-danger" id="txtName"></span>
                             </div>
                             <div class="col-8">
-                                <textarea asp-for="Adresses.Where(x=>x.Id== item.Id).FirstOrDefault().Address" class="form-control"> </textarea>
-                                <span asp-validation-for="Adresses.Where(x=>x.Id== item.Id).FirstOrDefault().Address" class="text-danger"></span>
+                                <textarea asp-for="PersonAdresses[i].Address" class="form-control"> </textarea>
+                                <span asp-validation-for="PersonAdresses[i].Address" class="text-danger" id="txtAddress"></span>
                             </div>
                             <div class="col-8">
-                                <textarea asp-for="Adresses.Where(x=>x.Id== item.Id).FirstOrDefault().AdressType" class="form-control"> </textarea>
-                                <span asp-validation-for="Adresses.Where(x=>x.Id== item.Id).FirstOrDefault().AdressType" class="text-danger"></span>
+                                <textarea asp-for="PersonAdresses[i].AdressType" class="form-control"> </textarea>
+                                <span asp-validation-for="PersonAdresses[i].AdressType" class="text-danger" id="txtAddressType"></span>
                             </div>
 
                         }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TodoCase.Core.ViewModel;
+using TodoCase.Core.ViewModel.Insert;
 using TodoCase.DataAccess.Services.IServices;
 
 namespace TodoCase.Controllers
@@ -62,7 +63,7 @@ namespace TodoCase.Controllers
             return View(model);
         }
         [HttpPost]
-        public IActionResult Update(PersonelViewModel model)
+        public IActionResult Update(PersonelUpdateModel model)
         {
             if (ModelState.IsValid)
             {
@@ -89,7 +90,7 @@ namespace TodoCase.Controllers
         public JsonResult GetAddressValuesByAddressId(int id)
         {
             var value = _personService.GetAddressValuesByAddressId(id);
-            return Json(new { id = value.Id, name = value.Name, addressType = value.AdressType,   });
+            return Json(new { id = value.Id, name = value.Name, addressType = value.AdressType, address = value.Address  });
         }
 
     }
